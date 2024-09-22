@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import {
-  Checkbox,
-  CheckIcon,
-  Combobox,
-  Group,
-  Input,
-  Pill,
-  PillsInput,
-  useCombobox,
+    Checkbox,
+    Combobox,
+    Group,
+    Input,
+    Pill,
+    PillsInput,
+    useCombobox
 } from "@mantine/core";
-import { IconSearch, IconSelector } from "@tabler/icons-react";
+import { IconSelector } from "@tabler/icons-react";
+import { useEffect, useState } from "react";
 
 
 const MultiInput = (props: any) => {
