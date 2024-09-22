@@ -8,7 +8,7 @@ import NavLinks from "./NavLinks";
 
 const Header = () => {
   return (
-    <div className="w-full bg-mine-shaft-950 h-20 text-white flex px-6 justify-between items-center">
+    <div className="w-full bg-mine-shaft-950 h-20 text-white flex px-6 justify-between items-center font-['poppins']">
       <div className="flex gap-3 text-bright-sun-400">
         {/* Logo */}
         <IconSeeding className="h-8 w-8" stroke={2} />
