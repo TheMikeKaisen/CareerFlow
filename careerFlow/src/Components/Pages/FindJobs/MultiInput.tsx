@@ -105,7 +105,7 @@ const MultiInput = (props: any) => {
         <Combobox.Search
           value={search}
           onChange={(event) => setSearch(event.currentTarget.value)}
-          placeholder="Search groceries"
+          placeholder={`Search ${props.title}`}
         />
         <Combobox.Options>
           {options}
