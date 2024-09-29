@@ -14,9 +14,9 @@ const NavLinks = () => {
     <div className="flex gap-5 text-mine-shaft-300 h-full items-center">
       {
         Links.map((links, index)=> (
-            <div className={`${location.pathname=="/"+links.url?"border-bright-sun-400 text-bright-sun-400": "border-transparent"}  border-t-[3px] h-full flex items-center`}>
+            <div  key={index} className={`${location.pathname=="/"+links.url?"border-bright-sun-400 text-bright-sun-400": "border-transparent"}  border-t-[3px] h-full flex items-center`}>
 
-            <Link key={index} to={links.url}>{links.name}</Link>
+            <Link to={links.url}>{links.name}</Link>
             </div>
         ))
     }

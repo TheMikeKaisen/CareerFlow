@@ -14,7 +14,7 @@ const TalentProfilePage = () => {
         </Link>
       
 
-      <div className="flex gap-5 justify-center">
+      <div className="flex gap-5 justify-around">
         {/* Left Section */}
         <Profile {...profile} />
 
