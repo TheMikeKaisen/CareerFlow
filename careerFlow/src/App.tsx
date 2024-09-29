@@ -11,6 +11,9 @@ import FindTalents from "./Components/Pages/FindTalents";
 import TalentProfilePage from "./Components/Pages/FindTalentsPage/TalentProfilePage/TalentProfilePage";
 import PostJobPage from "./Components/Pages/PostJobPage";
 
+// rich text editor
+import '@mantine/tiptap/styles.css';
+
 function App() {
   const theme = createTheme({
     colors: {
