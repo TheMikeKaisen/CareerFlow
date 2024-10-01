@@ -13,6 +13,7 @@ const CompanyPage = () => {
         color="brightSun.4"
         variant="light"
         my={'md'}
+        mx={'md'}
         onClick={()=>{navigate(-1)}}
       >
         Back

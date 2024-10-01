@@ -1,6 +1,10 @@
+
+// Mantine Styles
 import "@mantine/carousel/styles.css";
 import { createTheme, Divider, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./Components/Header/Header";
@@ -16,6 +20,7 @@ import '@mantine/tiptap/styles.css';
 import ApplyJobPage from "./Components/Pages/ApplyJobPage";
 import JobDescPage from "./Components/Pages/JobDescription/JobDescPage";
 import CompanyPage from "./Components/Pages/CompanyPage";
+import PostedJobsPage from "./Components/Pages/PostedJobsPage";
 
 function App() {
   const theme = createTheme({
@@ -67,6 +72,7 @@ function App() {
           <Route path="/talent-profile" element={<TalentProfilePage />} />
           <Route path="/apply-job" element={<ApplyJobPage />} />
           <Route path="/company" element={<CompanyPage />} />
+          <Route path="/posted-jobs" element={<PostedJobsPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         
