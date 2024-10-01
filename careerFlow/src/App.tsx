@@ -15,6 +15,7 @@ import PostJobPage from "./Components/Pages/PostJobPage";
 import '@mantine/tiptap/styles.css';
 import ApplyJobPage from "./Components/Pages/ApplyJobPage";
 import JobDescPage from "./Components/Pages/JobDescription/JobDescPage";
+import CompanyPage from "./Components/Pages/CompanyPage";
 
 function App() {
   const theme = createTheme({
@@ -65,6 +66,7 @@ function App() {
           <Route path="/jobs" element={<JobDescPage />}/>
           <Route path="/talent-profile" element={<TalentProfilePage />} />
           <Route path="/apply-job" element={<ApplyJobPage />} />
+          <Route path="/company" element={<CompanyPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         

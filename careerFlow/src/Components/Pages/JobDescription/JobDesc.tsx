@@ -120,7 +120,7 @@ const JobDesc = (props: any) => {
 
           {/* button */}
 
-          <Link to={""}>
+          <Link to={"/company"}>
             <Button color="brightSun.4" variant="light">
               Company Page
             </Button>
