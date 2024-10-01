@@ -1,11 +1,7 @@
 import { Avatar, Button, Divider, Modal, Text } from "@mantine/core";
 import { DateInput, TimeInput } from "@mantine/dates";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  IconCalendarMonth,
-  IconHeart,
-  IconMapPin
-} from "@tabler/icons-react";
+import { IconCalendarMonth, IconHeart, IconMapPin } from "@tabler/icons-react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -75,22 +71,49 @@ const TalentCard = (props: any) => {
 
       <Divider size={"xs"} color="mineShaft.7" />
 
-      {/* pay */}
-      <div className="flex justify-between text-mine-shaft-400">
-        {/* salary */}
-        <div className="font-semibold text-mine-shaft-200">
-          {props.expectedCtc}
+      {props.invited ? (
+        <div className="flex gap-1 text-mine-shaft-200 text-sm items-center">
+          <IconCalendarMonth stroke={1.5} /> Interview: August 27, 2024 10:00 AM
         </div>
+      ) : (
+        <div className="flex justify-between text-mine-shaft-400">
+          {/* salary */}
+          <div className="font-semibold text-mine-shaft-200">
+            {props.expectedCtc}
+          </div>
 
-        {/* posted date */}
-        <div className="flex gap-1 text-xs items-center">
-          <IconMapPin stroke={1.5} className="h-5 w-5" />
-          {props.location}
+          {/* posted date */}
+          <div className="flex gap-1 text-xs items-center">
+            <IconMapPin stroke={1.5} className="h-5 w-5" />
+            {props.location}
+          </div>
         </div>
-      </div>
+      )}
+
       <Divider size={"xs"} color="mineShaft.7" />
+
+      {/* Profile and Schedule buttons */}
       <div className="flex [&>*]:w-1/2 [&>*]:p-1">
-        <Link to={"/talent-profile"}>
+        {props.invited && (
+          <>
+            <div>
+
+              <Button color="brightSun.4" fullWidth variant="outline">
+                Accept
+              </Button>
+            </div>
+            
+            <div>
+              <Button color="brightSun.4" fullWidth variant="light">
+                Reject
+              </Button>
+            </div>
+          </>
+        )}
+        
+        {!props.invited && (
+          <>
+          <Link to={"/talent-profile"}>
           <Button color="brightSun.4" fullWidth variant="outline">
             Profile
           </Button>
@@ -112,6 +135,10 @@ const TalentCard = (props: any) => {
             </Button>
           )}
         </div>
+        </>
+        )}
+
+        
       </div>
 
       {/* Modal */}
@@ -136,8 +163,8 @@ const TalentCard = (props: any) => {
             onClick={() => ref.current?.showPicker()}
           />
           <Button color="brightSun.4" fullWidth variant="light">
-              Schedule
-            </Button>
+            Schedule
+          </Button>
         </div>
       </Modal>
     </div>

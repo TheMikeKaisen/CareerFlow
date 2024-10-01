@@ -26,7 +26,7 @@ const PostedJobDescription = () => {
           radius={"lg"}
           defaultValue={"overview"}
         >
-            {/* Tabs */}
+          {/* Tabs */}
           <Tabs.List className="[&_button[aria-selected='false']]:bg-mine-shaft-900 mb-5 [&_button]:p-3 [&_button]:font-medium [&_button]:text-sm">
             <Tabs.Tab value="overview">Overview</Tabs.Tab>
             <Tabs.Tab value="applicants">Applicants</Tabs.Tab>
@@ -35,23 +35,30 @@ const PostedJobDescription = () => {
 
           <Divider size={"xs"} my={"md"} />
 
-            {/* Job Description */}
+          {/* Job Description */}
           <Tabs.Panel value="overview" className="[&>div]:w-full">
             <JobDesc edit />
           </Tabs.Panel>
 
           {/* Applicants */}
           <Tabs.Panel value="applicants">
-            <div className="flex mt-10 flex-wrap gap-5">
+            <div className="flex mt-10 flex-wrap gap-5 justify-around">
               {talents.map(
                 (talent, index) =>
-                  index < 6 && <TalentCard key={index} {...talent} schedule/>
+                  index < 6 && <TalentCard key={index} {...talent} schedule />
               )}
             </div>
           </Tabs.Panel>
 
           {/* Invited */}
-          <Tabs.Panel value="invited">hello world</Tabs.Panel>
+          <Tabs.Panel value="invited">
+          <div className="flex mt-10 flex-wrap gap-5  justify-around">
+              {talents.map(
+                (talent, index) =>
+                  index < 6 && <TalentCard key={index} {...talent} invited />
+              )}
+            </div>
+          </Tabs.Panel>
         </Tabs>
       </div>
     </div>
