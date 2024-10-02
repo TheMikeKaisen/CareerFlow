@@ -1,4 +1,4 @@
-import { Avatar, Indicator } from "@mantine/core";
+import { Indicator } from "@mantine/core";
 import {
   IconBell,
   IconSeeding,
@@ -6,6 +6,7 @@ import {
 } from "@tabler/icons-react";
 import { useLocation } from "react-router-dom";
 import NavLinks from "./NavLinks";
+import ProfileMenu from "./ProfileMenu";
 
 const Header = () => {
   const location = useLocation();
@@ -22,16 +23,17 @@ const Header = () => {
         <NavLinks />
       
       <div className="flex gap-5 items-center">
-        {/* Profile */}
-        <div className="flex items-center gap-2">
-          <div>
-            <div>Mike</div>
-          </div>
-          <Avatar src={"avatar2.png"} />
-        </div>
+        
+
+        {/* Profile Menu */}
+        <ProfileMenu />
+
+        {/* Settings logo */}
         <div className="bg-mine-shaft-900 p-1.5 rounded-full">
           <IconSettings stroke={1.5} />
         </div>
+
+        {/* Bell logo */}
         <div className="bg-mine-shaft-900 p-1.5 rounded-full">
           <Indicator color="brightSun.4" withBorder processing>
             <IconBell stroke={1.5} />
