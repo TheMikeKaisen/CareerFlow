@@ -1,4 +1,4 @@
-package com.careerFlow.CareerFlow;
+package com.careerFlow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
