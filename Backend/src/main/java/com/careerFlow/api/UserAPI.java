@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.careerFlow.dto.UserDTO;
 import com.careerFlow.entity.User;
+import com.careerFlow.exception.CareerFlowException;
 import com.careerFlow.service.UserService;
 
 import jakarta.validation.Valid;
@@ -27,7 +28,7 @@ public class UserAPI {
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<UserDTO>registerUser(@RequestBody @Valid UserDTO userDTO){
+	public ResponseEntity<UserDTO>registerUser(@RequestBody @Valid UserDTO userDTO) throws CareerFlowException{
 		userDTO = userService.registerUser(userDTO);
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
 	}

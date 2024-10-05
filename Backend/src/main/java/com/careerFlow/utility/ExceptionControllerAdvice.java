@@ -3,6 +3,8 @@ package com.careerFlow.utility;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
@@ -10,18 +12,31 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import jakarta.validation.Constraint;
+import com.careerFlow.exception.CareerFlowException;
+
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
 	
-//	To handle General Exceptions
+	@Autowired
+	private Environment environment;
 	
+	
+//	To handle General Exceptions
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorInfo> GeneralException(Exception exception){
 		ErrorInfo error = new ErrorInfo(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now());
+		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	
+//	look for specific messages in the application properties
+	@ExceptionHandler(CareerFlowException.class)
+	public ResponseEntity<ErrorInfo> envException(Exception exception){
+		String msg = environment.getProperty(exception.getMessage());
+		ErrorInfo error = new ErrorInfo(msg, HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now());
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
