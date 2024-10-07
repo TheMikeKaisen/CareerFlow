@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.careerFlow.dto.LoginDTO;
 import com.careerFlow.dto.UserDTO;
 import com.careerFlow.entity.User;
 import com.careerFlow.exception.CareerFlowException;
@@ -36,6 +37,18 @@ public class UserServiceImpl implements UserService{
 		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		User user= userDTO.toEntity();
 		user = userRepository.save(user);
+		return user.toDTO();
+	}
+
+	@Override
+	public UserDTO loginUser(LoginDTO loginDTO) throws CareerFlowException {
+		User user = userRepository.findByEmail(loginDTO.getEmail()).orElseThrow(()-> new CareerFlowException("USER_NOT_FOUND"));
+		
+		if(!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
+			throw new CareerFlowException("INVALID_CREDENTIALS");
+			
+			
+		}
 		return user.toDTO();
 	}
 

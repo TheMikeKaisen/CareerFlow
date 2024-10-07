@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.careerFlow.dto.LoginDTO;
 import com.careerFlow.dto.UserDTO;
 import com.careerFlow.entity.User;
 import com.careerFlow.exception.CareerFlowException;
@@ -31,5 +32,11 @@ public class UserAPI {
 	public ResponseEntity<UserDTO>registerUser(@RequestBody @Valid UserDTO userDTO) throws CareerFlowException{
 		userDTO = userService.registerUser(userDTO);
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<UserDTO>loginUser(@RequestBody @Valid LoginDTO loginDTO) throws CareerFlowException{
+		
+		return new ResponseEntity<>(userService.loginUser(loginDTO) , HttpStatus.OK);
 	}
 }
